@@ -1,0 +1,23 @@
+{
+  "name": "v-id_server",
+  "version": "1.0.0",
+  "description": "server of DOAN-VDK",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/server.js"
+  },
+  "author": "Ramen_anhnguyenhoang321@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "connect-mongo": "^3.2.0",
+    "express": "^4.17.1",
+    "express-session": "^1.15.6",
+    "express-validator": "^4.3.0",
+    "md5": "^2.2.1",
+    "mongoose": "^5.9.1",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0"
+  }
+}
