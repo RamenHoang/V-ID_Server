@@ -4,7 +4,8 @@ const {dbVals} = require('./app');
 let connectDb = () => {
   return mongoose.connect(`${dbVals.dbConnection}://${dbVals.dbHost}:${dbVals.dbPort}/${dbVals.dbName}`, {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useFindAndModify: false
   });
 }
 

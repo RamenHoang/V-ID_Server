@@ -14,6 +14,9 @@ UserSchema.statics = {
   },
   findUserById(id) {
     return this.findById(id).exec();
+  },
+  findUserIdByUsername(username) {
+    return this.findOne({ 'username': username }, { _id: 1 }).exec();
   }
 }
 

@@ -1,5 +1,5 @@
 let express = require('express');
-const { home, auth } = require('../controllers/controllers');
+const { home, auth, user, vehicle } = require('../controllers/controllers');
 const { authValid } = require('../validations/validators');
 let initPassportLocal = require('../controllers/passportLocal');
 let passport = require('passport');
@@ -19,6 +19,10 @@ let initRoutes = (app) => {
 
   router.get('/logout', authValid.checkLoggedIn, auth.getLogout);
   
+  router.get('/get-info', user.getInfo);
+
+  router.put('/put-module-id', vehicle.putModuleId);
+
   app.use('/', router);
 }
 
