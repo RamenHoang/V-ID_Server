@@ -7,7 +7,7 @@ let passport = require('passport');
 
 let app = express();
 
-let hostname = '192.168.1.5';
+let hostname = '192.168.1.10';
 let port = '9080';
 
 connectDb();

@@ -2,6 +2,7 @@ let mongoose = require('mongoose');
 
 let VehicleSchema = new mongoose.Schema({
   hostId: String,
+  moduleId: { type: String, default: null },
   licensePlate: String,
   lastestSpeed: { type: Number, default: null },
   lastestLocation: {
@@ -14,6 +15,13 @@ let VehicleSchema = new mongoose.Schema({
 VehicleSchema.statics = {
   createNew(vehicleItem) {
     return this.create(vehicleItem);
+  },
+  putModuleId(hostId, moduleId) {
+    return this.findOneAndUpdate({
+      'hostId': hostId
+    }, {
+      'moduleId': moduleId
+    }).exec();
   }
 }
 
