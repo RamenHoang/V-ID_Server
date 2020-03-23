@@ -1,8 +1,8 @@
 const { vehicle } = require('../service/services');
 
-let putModuleId = async (req, res) => {
+let postModuleId = async (req, res) => {
   try {
-    let putStatus = await vehicle.putModuleId(req.body.hostId, req.body.moduleId);
+    let putStatus = await vehicle.postModuleId(req.body.hostId, req.body.moduleId);
     res.status(200).send(putStatus);
   } catch (error) {
     console.log(error);
@@ -11,5 +11,5 @@ let putModuleId = async (req, res) => {
 }
 
 module.exports = {
-  putModuleId: putModuleId
+  postModuleId: postModuleId
 }

@@ -16,7 +16,7 @@ VehicleSchema.statics = {
   createNew(vehicleItem) {
     return this.create(vehicleItem);
   },
-  putModuleId(hostId, moduleId) {
+  postModuleId(hostId, moduleId) {
     return this.findOneAndUpdate({
       'hostId': hostId
     }, {

@@ -2,27 +2,40 @@ let express = require('express');
 let initRoutes = require('./routes/routes');
 let bodyParser = require('body-parser');
 const connectDb = require('./config/connectDb');
-const configSession = require('./config/session');
+const session = require('./config/session');
 let passport = require('passport');
+let socketio = require('socket.io');
+let cookieParser = require('cookie-parser');
+let configSocketIo = require('./config/socketio');
+let http = require('http');
+let initSockets = require('./sockets/index');
 
 let app = express();
 
 let hostname = '192.168.1.10';
 let port = '9080';
 
+let server = http.createServer(app);
+let io = socketio(server);
+
 connectDb();
 
-configSession(app);
+session.configSession(app);
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
+
+app.use(cookieParser());
 
 app.use(passport.initialize());
 app.use(passport.session());
 
 initRoutes(app);
 
+// configSocketIo(io, cookieParser, session.sessionStore);
 
-app.listen(port, hostname, () => {
+initSockets(io);
+
+server.listen(port, hostname, () => {
   console.log(`Hello Ramen. Server on ${hostname}:${port}/`);
-})
+});
