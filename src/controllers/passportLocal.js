@@ -1,8 +1,7 @@
-let passport = require('passport');
 let passportLocal = require('passport-local');
 let UserModel = require('../models/userModel');
 
-let initPassportLocal = () => {
+let initPassportLocal = (passport) => {
   passport.use(new passportLocal.Strategy({
     usernameField: 'username',
     passwordField: 'password',
@@ -31,4 +30,37 @@ let initPassportLocal = () => {
   });
 }
 
-module.exports = initPassportLocal;
+let initModulePassportLocal = (passport) => {
+  passport.use(new passportLocal.Strategy({
+    usernameField: 'hostId',
+    passwordField: 'moduleId',
+    passReqToCallback: true,
+  }, async (req, username, password, done) => {
+    try {
+      let user = await UserModel.findUserById(username);
+      if (user) {
+        return done(false, password);
+      }
+    } catch (error) {
+      console.log(error);
+      return done(null, false)
+    }
+  }));
+
+  passport.serializeUser((password, done) => {
+    done(null, password);
+  });
+
+  passport.deserializeUser((password, done) => {
+    try {
+      done(null, password);
+    } catch (error) {
+      done(error, null);
+    }
+  });
+}
+
+module.exports = {
+  initPassportLocal: initPassportLocal,
+  initModulePassportLocal: initModulePassportLocal
+}

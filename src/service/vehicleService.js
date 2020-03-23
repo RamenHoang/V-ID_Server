@@ -1,9 +1,9 @@
 let VehicleModel = require('../models/vehicleModel');
 
-let putModuleId = (hostId, moduleId) => {
+let postModuleId = (hostId, moduleId) => {
   return new Promise(async (resolve, reject) => {
     try {
-      let putStatus = await VehicleModel.putModuleId(hostId, moduleId);
+      let putStatus = await VehicleModel.postModuleId(hostId, moduleId);
       resolve(!!putStatus);
     } catch (error) {
       reject(error);
@@ -12,5 +12,5 @@ let putModuleId = (hostId, moduleId) => {
 }
 
 module.exports = {
-  putModuleId: putModuleId
+  postModuleId: postModuleId
 }

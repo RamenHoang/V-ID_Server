@@ -16,8 +16,8 @@ let sessionStore = new store({
 
 let configSession = app => {
   app.use(session({
-    key: 'express.sid',
-    secret: 'secret',
+    key: dbVals.ssKey,
+    secret: dbVals.ssSecret,
     store: sessionStore,
     resave: true,
     saveUninitialized: false,
@@ -27,4 +27,7 @@ let configSession = app => {
   }));
 }
 
-module.exports = configSession;
+module.exports = {
+  configSession: configSession,
+  sessionStore: sessionStore
+}

@@ -1,10 +1,11 @@
 let express = require('express');
 const { home, auth, user, vehicle } = require('../controllers/controllers');
 const { authValid } = require('../validations/validators');
-let initPassportLocal = require('../controllers/passportLocal');
+let PassportLocal = require('../controllers/passportLocal');
 let passport = require('passport');
 
-initPassportLocal();
+PassportLocal.initPassportLocal(passport);
+// PassportLocal.initModulePassportLocal(passport);
 
 let router = express.Router();
 
@@ -21,7 +22,7 @@ let initRoutes = (app) => {
   
   router.get('/get-info', user.getInfo);
 
-  router.put('/put-module-id', vehicle.putModuleId);
+  router.post('/post-module-id', passport.authenticate('local'), vehicle.postModuleId);
 
   app.use('/', router);
 }
