@@ -12,7 +12,7 @@ let initSockets = require('./sockets/index');
 
 let app = express();
 
-let hostname = '192.168.1.10';
+let hostname = '192.168.1.4';
 let port = '9080';
 
 let server = http.createServer(app);

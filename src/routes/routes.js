@@ -15,7 +15,8 @@ let initRoutes = (app) => {
   router.post('/register', authValid.register, auth.postRegister);
 
   router.post('/login', passport.authenticate('local'), (req, res) => {
-    res.status(200).send(req.user);
+    console.log("post Login");
+    res.status(200).send(true);
   });
 
   router.get('/logout', authValid.checkLoggedIn, auth.getLogout);

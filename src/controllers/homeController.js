@@ -1,5 +1,6 @@
 let getHome = (req, res) => {
-  return res.send({
+  console.log("Get Home");
+  return res.status(200).send({
     name: 'Anh',
     age: 21
   });

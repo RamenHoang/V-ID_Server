@@ -1,5 +1,6 @@
 let UserModel = require('../models/userModel');
 let VehicleModel = require('../models/vehicleModel');
+let MovementModel = require('../models/movementModel');
 
 let register = data => {
   return new Promise(async (resolve, reject) => {
@@ -20,12 +21,15 @@ let register = data => {
         licensePlate: data.licensePlate,
         updatedAt: Date.now()
       }
-
       let newVehicle = await VehicleModel.createNew(vehicleItem);
+      let movementItem = {
+        hostId: `${newVehicle._id}`
+      }
+      let newMovement = await MovementModel.createNew(movementItem);
 
       resolve({
-        user: newUser,
-        vehicle: newVehicle
+        Vehicle: newVehicle,
+        Movement: newMovement
       });
     } catch (error) {
       console.log(error);
