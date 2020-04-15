@@ -12,6 +12,7 @@ let register = [
 ];
 
 let checkLoggedIn = (req, res, next) => {
+  console.log(req);
   if (!req.isAuthenticated()) {
     return res.status(500).send('Not logged in');
   }

@@ -9,10 +9,11 @@ let cookieParser = require('cookie-parser');
 let configSocketIo = require('./config/socketio');
 let http = require('http');
 let initSockets = require('./sockets/index');
+let initPassportLocal = require('./config/passportLocal');
 
 let app = express();
 
-let hostname = '192.168.1.10';
+let hostname = '192.168.1.7';
 let port = '9080';
 
 let server = http.createServer(app);
@@ -30,7 +31,8 @@ app.use(cookieParser());
 app.use(passport.initialize());
 app.use(passport.session());
 
-initRoutes(app);
+initPassportLocal(passport);
+initRoutes(app, passport);
 
 // configSocketIo(io, cookieParser, session.sessionStore);
 

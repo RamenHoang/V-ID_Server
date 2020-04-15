@@ -9,6 +9,9 @@ let initPassportLocal = (passport) => {
   }, async (req, username, password, done) => {
     try {
       let user = await UserModel.findByUsername(username);
+      if (user === null) {
+        return done(null, false);
+      }
       if (!user.comparePassword(password)) {
         return done(null, false);
       }
@@ -30,37 +33,4 @@ let initPassportLocal = (passport) => {
   });
 }
 
-let initModulePassportLocal = (passport) => {
-  passport.use(new passportLocal.Strategy({
-    usernameField: 'hostId',
-    passwordField: 'moduleId',
-    passReqToCallback: true,
-  }, async (req, username, password, done) => {
-    try {
-      let user = await UserModel.findUserById(username);
-      if (user) {
-        return done(false, password);
-      }
-    } catch (error) {
-      console.log(error);
-      return done(null, false)
-    }
-  }));
-
-  passport.serializeUser((password, done) => {
-    done(null, password);
-  });
-
-  passport.deserializeUser((password, done) => {
-    try {
-      done(null, password);
-    } catch (error) {
-      done(error, null);
-    }
-  });
-}
-
-module.exports = {
-  initPassportLocal: initPassportLocal,
-  initModulePassportLocal: initModulePassportLocal
-}
+module.exports = initPassportLocal;
