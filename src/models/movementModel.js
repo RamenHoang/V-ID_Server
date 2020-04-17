@@ -19,7 +19,9 @@ MovementSchema.statics = {
     return this.findByIdAndUpdate(id, {
       $push: {
         movementData: {
-          $each: data
+          lat: data.lat,
+          lng: data.lng,
+          speed: data.speed
         }
       }
     });
