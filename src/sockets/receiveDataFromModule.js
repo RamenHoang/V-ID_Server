@@ -1,9 +1,19 @@
 let receiveDataFromModule = io => {
   io.on('connection', socket => {
+
+    console.log(socket.id);
+    
     socket.on('send-data-to-server', data => {
-      console.log(data, typeof data);
-      // io.sockets.connected[socket.id].emit('response-from-server', 'Received!');
+
+      io.sockets.emit('Server-sent-gps-data', {
+        name: "Hu hu"
+      });
+
     });
+
+    socket.on('hello', data => {
+      console.log(data, socket.id);
+    })
   })
 }
 
