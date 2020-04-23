@@ -13,10 +13,6 @@ let initPassportLocal = require('./config/passportLocal');
 
 let app = express();
 
-
-let hostname = '192.168.1.6';
-let port = '9080';
-
 let server = http.createServer(app);
 let io = socketio(server);
 
