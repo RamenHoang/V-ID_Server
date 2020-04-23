@@ -10,7 +10,7 @@ let dbPort = dbVals.dbPort;
 let dbName = dbVals.dbName;
 
 let sessionStore = new store({
-  url: 'mongodb+srv://ramen-manager:Hakuouki123@cluster-vid-d9htd.mongodb.net/test?retryWrites=true&w=majority',
+  url: `${dbConnection}://${dbHost}:${dbPort}/${dbName}`,
   autoReconnect: true
 });
 
