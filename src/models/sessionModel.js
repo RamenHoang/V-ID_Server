@@ -7,6 +7,11 @@ SessionSchema.statics = {
     return this.findOne({
       'session': {$regex: `.*${token}.*`}
     }).exec();
+  },
+  logout(token) {
+    return this.findOneAndRemove({
+      'session': {$regex: `.*${token}.*`}
+    }).exec();
   }
 }
 

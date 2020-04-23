@@ -8,6 +8,10 @@ let socketio = require('socket.io');
 let cookieParser = require('cookie-parser');
 let configSocketIo = require('./config/socketio');
 let http = require('http');
+
+let hostname = '192.168.1.2';
+let port = '9080';
+
 let initSockets = require('./sockets/index');
 let initPassportLocal = require('./config/passportLocal');
 

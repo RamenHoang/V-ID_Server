@@ -11,6 +11,18 @@ let postModuleId = (hostId, moduleId) => {
   });
 }
 
+let getIdAndLengthByHostId = hostId => {
+  return new Promise(async (resovle, reject) => {
+    try {
+      let vhost = await VehicleModel.getIdAndLengthByHostId(hostId);
+      resovle(vhost);
+    } catch (error) {
+      reject(error);
+    }
+  });
+}
+
 module.exports = {
-  postModuleId: postModuleId
+  postModuleId: postModuleId,
+  getIdAndLengthByHostId: getIdAndLengthByHostId
 }

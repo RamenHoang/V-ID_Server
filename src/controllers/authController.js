@@ -1,5 +1,5 @@
 const { validationResult } = require('express-validator/check');
-const { auth, movement } = require('../service/services');
+const { auth, movement, session } = require('../service/services');
 let passport = require('passport');
 
 let postRegister = async (req, res) => {
@@ -19,6 +19,7 @@ let postRegister = async (req, res) => {
 
 let getLogout = (req, res) => {
   req.logout();
+  session.logout(req.params.token);
   return res.status(200).send('Loged out');
 }
 

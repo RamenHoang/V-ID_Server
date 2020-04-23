@@ -1,12 +1,13 @@
 let express = require('express');
 const { home, auth, user, vehicle, movement } = require('../controllers/controllers');
 const { authValid } = require('../validations/validators');
-// PassportLocal.initModulePassportLocal(passport);
 
 let router = express.Router();
 
 let initRoutes = (app, passport) => {
-  router.get('/', home.getHome);
+  router.get('/', (req, res) => {
+    res.status(200).send("Everything is ok");
+  });
 
   router.get('/get-lastest-location', authValid.checkLoggedIn, home.getHome);
 
@@ -14,7 +15,7 @@ let initRoutes = (app, passport) => {
 
   router.post('/login', auth.postLogin);
 
-  router.get('/logout', auth.getLogout);
+  router.get('/logout/:token', auth.getLogout);
   
   router.get('/get-info', user.getInfo);
 

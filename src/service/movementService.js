@@ -15,6 +15,19 @@ let getNewestMovement = (hostId) => {
   });
 }
 
+let addNew = item => {
+  return new Promise((resolve, reject) => {
+    try {
+      MovementModel.createNew(item);
+      VehicleModel.increaseMovementData(item.hostId);
+      resolve(true);
+    } catch (error) {
+      reject(error);
+    }
+  })
+}
+
 module.exports = {
-  getNewestMovement: getNewestMovement
+  getNewestMovement: getNewestMovement,
+  addNew: addNew
 }
