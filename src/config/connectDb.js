@@ -8,7 +8,7 @@ let connectDb = () => {
   //   useUnifiedTopology: true,
   //   useFindAndModify: false
   // });
-  return mongoose.connect('mongodb+srv://ramen:Ramen1999@cluster0-ox4sy.mongodb.net/test?retryWrites=true&w=majority', 
+  return mongoose.connect('mongodb+srv://ramen-manager:Hakuouki123@cluster-vid-d9htd.mongodb.net/test?retryWrites=true&w=majority', 
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
