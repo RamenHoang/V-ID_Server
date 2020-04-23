@@ -4,6 +4,7 @@ let VehicleSchema = new mongoose.Schema({
   hostId: String,
   moduleId: { type: String, default: null },
   licensePlate: String,
+  movementDataLength: {type: Number, default: 0},
   status: { type: Boolean, default: false }, // false is immoble, true is running
   updatedAt: { type: Number, default: Date.now }
 });
@@ -17,6 +18,14 @@ VehicleSchema.statics = {
       'hostId': hostId
     }, {
       'moduleId': moduleId
+    }).exec();
+  },
+  getIdAndLengthByHostId(hostId) {
+    return this.findOne({
+      hostId: hostId
+    },{
+      _id: 1,
+      movementDataLength: 1
     }).exec();
   }
 }

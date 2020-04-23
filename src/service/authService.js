@@ -3,6 +3,9 @@ let VehicleModel = require('../models/vehicleModel');
 let MovementModel = require('../models/movementModel');
 
 let register = data => {
+  // username
+  // password
+  // biensoxe
   return new Promise(async (resolve, reject) => {
     try {
       let existedUser = await UserModel.findByUsername(data.username);
@@ -14,23 +17,24 @@ let register = data => {
         username: data.username,
         password: data.password
       }
+      // created!
       let newUser = await UserModel.createNew(userItem);
+
 
       let vehicleItem = {
         hostId: `${newUser._id}`,
         licensePlate: data.licensePlate,
         updatedAt: Date.now()
       }
-      let newVehicle = await VehicleModel.createNew(vehicleItem);
-      let movementItem = {
-        hostId: `${newVehicle._id}`
-      }
-      let newMovement = await MovementModel.createNew(movementItem);
 
-      resolve({
-        Vehicle: newVehicle,
-        Movement: newMovement
-      });
+      let newVehicle = await VehicleModel.createNew(vehicleItem);
+
+      if (!!newUser && !!newVehicle) {
+        resolve({
+          SERVER_RESPONSE: 1,
+          message: `Chào mừng ${newUser.username} đã đến với V-ID`
+        })
+      }
     } catch (error) {
       console.log(error);
       reject(error);

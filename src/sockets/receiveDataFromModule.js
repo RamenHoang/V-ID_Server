@@ -4,16 +4,14 @@ let receiveDataFromModule = io => {
     console.log(socket.id);
     
     socket.on('send-data-to-server', data => {
+      console.log(data);
 
       io.sockets.emit('Server-sent-gps-data', {
-        name: "Hu hu"
+        lat: data.gps[0],
+        lng: data.gps[1]
       });
 
     });
-
-    socket.on('hello', data => {
-      console.log(data, socket.id);
-    })
   })
 }
 

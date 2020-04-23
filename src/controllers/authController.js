@@ -3,7 +3,7 @@ const { auth, movement } = require('../service/services');
 let passport = require('passport');
 
 let postRegister = async (req, res) => {
-  console.log(req.body);
+  console.log(req.body); // username. password
   let results = validationResult(req);
   let errs = [];
   if (!results.isEmpty()) {
@@ -34,11 +34,15 @@ let postLogin = (req, res, next) => {
     req.logIn(user, err => {
       if (err)
         return next(err);
-      if (!err)
+      if (!err) {
+        // console.log(req.session.cookie);
         return res.status(200).json({
           SERVER_RESPONSE: 1,
-          message: `Đăng nhập thành công. Xin chào ${req.user.username}`
+          message: `Đăng nhập thành công. Xin chào ${req.user.username}`,
+          token: req.session.passport.user.token,
+          userid: `${req.user._id}`
         });   
+      }
     });
   }) (req, res, next);
 }

@@ -14,7 +14,7 @@ let initPassportLocal = require('./config/passportLocal');
 let app = express();
 
 
-let hostname = '192.168.1.7';
+let hostname = '192.168.1.6';
 let port = '9080';
 
 let server = http.createServer(app);
@@ -25,7 +25,9 @@ connectDb();
 session.configSession(app);
 
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(bodyParser.json());
+app.use(bodyParser.json({
+  strict: false
+}));
 
 app.use(cookieParser());
 
@@ -39,6 +41,10 @@ initRoutes(app, passport);
 
 initSockets(io);
 
-server.listen(port, hostname, () => {
-  console.log(`Hello Ramen. Server on ${hostname}:${port}/`);
+// server.listen(port, hostname, () => {
+//   console.log(`Hello Ramen. Server on ${hostname}:${port}/`);
+// });
+
+server.listen(process.env.PORT, () => {
+	console.log(`Hello Ramen, I'm running at ${process.env.PORT}/`);
 });

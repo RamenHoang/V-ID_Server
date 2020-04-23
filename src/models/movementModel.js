@@ -2,30 +2,24 @@ let mongoose = require('mongoose');
 
 let MovementSchema = new mongoose.Schema({
   hostId: String,
-  movementData: [
-    {
-      lat: Number,
-      lng: Number,
-      speed: Number
-    }
-  ]
+  movementData: {
+    lat: { type: Number },
+    lng: { type: Number },
+    speed: { type: Number, default: 0 }
+  },
+  createdAt_String: { type: String, default: new Date().toString() },
+  createdAt_Number: { type: Number, default: Date.now }
 });
 
 MovementSchema.statics = {
   createNew(movementItem) {
     return this.create(movementItem);
   },
-  pushData(id, data) {
-    return this.findByIdAndUpdate(id, {
-      $push: {
-        movementData: {
-          lat: data.lat,
-          lng: data.lng,
-          speed: data.speed
-        }
-      }
-    });
+  getNewest(id, index) {
+    return this.find({
+      hostId: id
+    }).skip(index).exec();
   }
 }
 
-module.exports = mongoose.model('movementdata', MovementSchema);
+module.exports = mongoose.model('movement', MovementSchema);

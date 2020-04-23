@@ -1,4 +1,5 @@
 let {check} = require('express-validator/check');
+let SessionModel = require('../models/sessionModel');
 
 let register = [
   check('username', 'Invalid Username. At least 5 characters')
@@ -11,12 +12,20 @@ let register = [
     })
 ];
 
-let checkLoggedIn = (req, res, next) => {
-  console.log(req);
-  if (!req.isAuthenticated()) {
-    return res.status(500).send('Not logged in');
+let checkLoggedIn = async (req, res, next) => {
+  if (req.query.token) {
+    let status = await SessionModel.findByToken(req.query.token);
+    if (!!status) {
+      console.log('Logged in');
+      res.status(200);
+      return next();
+    }
   }
-  next();
+  console.log("Not log in");
+  return res.status(500).send({
+    SERVER_RESPONSE: 0,
+    error: "Not logged in"
+  });
 }
 
 module.exports = {
