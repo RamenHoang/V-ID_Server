@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dự đoán mất xe :)))</title>
+
+  <style>
+    * {
+      font-size: 25px;
+    }
+  </style>
+</head>
+<body>
+  <form action="" method="get" align="center">
+    <label for="txt_distance">Khoảng cách tới vị trí gốc(m)</label>
+    <input type="text" value="" id="txt_distance">
+    <br>
+    <label for="txt_distance">Tốc độ hiện tại(m/s)</label>
+    <input type="text" value="" id="txt_speed">
+    <br>
+    <input type="button" value="Dự đoán" id="btn_submit">
+    <br>
+    <label for="txt_result">Trạng thái</label>
+    <input type="text" name="" id="txt_result" disabled>
+  </form>
+
+
+  <script>
+    var distance = document.getElementById('txt_distance');
+    var speed = document.getElementById('txt_speed');
+    var result = document.getElementById('txt_result');
+
+    var submit = document.getElementById('btn_submit');
+    submit.addEventListener('click', function() {
+      axios.get(`/get_suggestion?distance=${distance.value}&speed=${speed.value}`)
+      .then(function(res) {
+        result.value = res.data;
+      })
+    });
+  </script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</body>
+</html>

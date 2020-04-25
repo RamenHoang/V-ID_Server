@@ -1,26 +1,29 @@
 let express = require('express');
 const { home, auth, user, vehicle, movement } = require('../controllers/controllers');
+const { suggestion } = require('../service/services');
 const { authValid } = require('../validations/validators');
 
 let router = express.Router();
 
 let initRoutes = (app, passport) => {
   router.get('/', (req, res) => {
-    res.status(200).send("Everything is ok");
+    res.render('index');
   });
 
-  router.get('/get-lastest-location', authValid.checkLoggedIn, home.getHome);
+  router.get('/get_suggestion', suggestion.suggestStolenStatus);
+  
+  router.get('/get-latest-location', authValid.checkLoggedIn, home.getHome);
 
   router.post('/register', authValid.register, auth.postRegister);
 
   router.post('/login', auth.postLogin);
 
   router.get('/logout/:token', auth.getLogout);
-  
+
   router.get('/get-info', user.getInfo);
 
   router.post('/post-module-id', vehicle.postModuleId);
-  
+
   router.put('/put-new-location', movement.putNewLocation);
 
   app.use('/', router);

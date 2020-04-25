@@ -8,8 +8,9 @@ let socketio = require('socket.io');
 let cookieParser = require('cookie-parser');
 let configSocketIo = require('./config/socketio');
 let http = require('http');
+let configViewEngine = require('./config/viewEngine');
 
-let hostname = '192.168.1.2';
+let hostname = '192.168.1.9';
 let port = '9080';
 
 let initSockets = require('./sockets/index');
@@ -23,6 +24,8 @@ let io = socketio(server);
 connectDb();
 
 session.configSession(app);
+
+configViewEngine(app);
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json({
@@ -48,3 +51,4 @@ initSockets(io);
 server.listen(process.env.PORT, () => {
 	console.log(`Hello Ramen, I'm running at ${process.env.PORT}/`);
 });
+

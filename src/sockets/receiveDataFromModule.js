@@ -1,9 +1,9 @@
-const {putNewLocation} = require('../helper/helper');
+const { putNewLocation } = require('../helper/helper');
+const { pushSocketIdToArray, emitNotifyToArray, removeSocketIdFromArray } = require('../helper/socketHelper');
 
 let receiveDataFromModule = io => {
   io.on('connection', socket => {
-
-    console.log('ID from device', socket.id);
+    let clients = {};
 
     socket.on('Send-data-to-server', data => {
       console.log(data);
