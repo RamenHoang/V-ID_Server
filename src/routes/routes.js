@@ -1,5 +1,5 @@
 let express = require('express');
-const { home, auth, user, vehicle, movement } = require('../controllers/controllers');
+const { home, auth, user, vehicle, movement, information } = require('../controllers/controllers');
 const { suggestion } = require('../service/services');
 const { authValid } = require('../validations/validators');
 
@@ -25,6 +25,8 @@ let initRoutes = (app, passport) => {
   router.post('/post-module-id', vehicle.postModuleId);
 
   router.put('/put-new-location', movement.putNewLocation);
+
+  router.put('/put-new-information', information.putNewInformation);
 
   app.use('/', router);
 }

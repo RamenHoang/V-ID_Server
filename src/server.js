@@ -10,7 +10,7 @@ let configSocketIo = require('./config/socketio');
 let http = require('http');
 let configViewEngine = require('./config/viewEngine');
 
-let hostname = '192.168.1.9';
+let hostname = 'localhost';
 let port = '9080';
 
 let initSockets = require('./sockets/index');
