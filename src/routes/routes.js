@@ -26,6 +26,8 @@ let initRoutes = (app, passport) => {
 
   router.put('/put-new-location', movement.putNewLocation);
 
+  router.put('/put-new-information');
+
   app.use('/', router);
 }
 
