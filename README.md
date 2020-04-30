@@ -2,7 +2,7 @@
 
 ## 1. Register
 - Method: POST
-- API url: == /register ==
+- API url: ```/register```
 - Body: {
 	"username": "your_username",
 	"password": "your_password", // example Aa@1234 
