@@ -3,11 +3,11 @@
 ## 1. Register
 - Method: **POST**
 - API url: ```/register```
-- Body: {&nbsp;
-	"username": "your_username",&nbsp;
-	"password": "your_password", // example Aa@1234 &nbsp;
-	"password_confirm": "rewrite_your_password",&nbsp;
-	"licensePlate": "your_licensePlate"&nbsp;
+- Body: {\
+	"username": "your_username",\
+	"password": "your_password", // example Aa@1234 \
+	"password_confirm": "rewrite_your_password",\
+	"licensePlate": "your_licensePlate"\
 }
 - Server's response: {&nbsp;
     "SERVER_RESPONSE": 1,&nbsp;
