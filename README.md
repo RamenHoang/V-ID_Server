@@ -18,7 +18,7 @@
 
 ## 2. Login
 - Method: POST
-- API url: ==/login==
+- API url: ```/login```
 - Body: {
 	"username": "your_username",
 	"password": "your_password"
@@ -32,13 +32,13 @@
 
 ## 3. Logout
 - Method: GET
-- API url: ==/logout/{token}==
+- API url: ```/logout/{token}```
 - Body: **none**
 - Server's response: *Logged out*
 
 ## 4. Get latest location
 - Method: GET
-- API url: ==/get-latest-location?token={your_token}&userid={your_userid}==
+- API url: ```/get-latest-location?token={your_token}&userid={your_userid}```
 - Body: **none**
 - Server's response: {
     "SERVER_RESPONSE": 1,
@@ -51,7 +51,7 @@
 
 ## 5. Put new information
 - Method: PUT,
-- API url: ==/put-new-information==
+- API url: ```/put-new-information```
 - Body: {
 	"information": [
 			{
