@@ -9,12 +9,17 @@ let postRegister = async (req, res) => {
   if (!results.isEmpty()) {
     errs = Object.values(results.mapped()).map(errObj => errObj.msg);
     console.log("Error post register");
-    return res.status(500).send(errs);
+    return res.status(400).send(errs);
   }
 
-  let registerStatus = await auth.register(req.body);
-  console.log("Post Register");
-  return res.status(200).send(registerStatus);
+  try {
+    let registerStatus = await auth.register(req.body);
+    console.log("Post Register");
+    return res.status(200).send(registerStatus);
+  } catch (error) {
+    console.log(error);
+    return res.status(400).send(error);
+  }
 }
 
 let getLogout = (req, res) => {

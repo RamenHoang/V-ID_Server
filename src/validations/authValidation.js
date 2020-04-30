@@ -1,13 +1,13 @@
-let {check} = require('express-validator/check');
+let { check } = require('express-validator/check');
 let SessionModel = require('../models/sessionModel');
 
 let register = [
   check('username', 'Invalid Username. At least 5 characters')
-    .isLength({min: 5}),
+    .isLength({ min: 5 }),
   check('password', 'Invalid Password')
     .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{6,}$/),
   check('password_confirm', 'Not match')
-    .custom((value, {req}) => {
+    .custom((value, { req }) => {
       return value === req.body.password;
     })
 ];

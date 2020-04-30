@@ -10,7 +10,10 @@ let register = data => {
     try {
       let existedUser = await UserModel.findByUsername(data.username);
       if (existedUser) {
-        return reject('User is existed!');
+        return reject({
+          SERVER_RESPONSE: 0,
+          error: 'Username is existed!'
+        });
       }
       
       let userItem = {
@@ -30,7 +33,7 @@ let register = data => {
       let newVehicle = await VehicleModel.createNew(vehicleItem);
 
       if (!!newUser && !!newVehicle) {
-        resolve({
+        return resolve({
           SERVER_RESPONSE: 1,
           message: `Chào mừng ${newUser.username} đã đến với V-ID`
         })
