@@ -9,14 +9,14 @@
 >> "password": "your_password", // example Aa@1234 \
 >> "password_confirm": "rewrite_your_password",\
 >> "licensePlate": "your_licensePlate"\
-> }\
+> }
 - Server's response: 
->{\
+>{
 >>"SERVER_RESPONSE": 1,\
 >>"message": "Chào mừng your_username đã đến với V-ID",\
 >>"token": "the_token",\
 >>"userid": "your_user_id"\
->}\
+>}
 
 ## 2. Login
 - Method: **POST**
