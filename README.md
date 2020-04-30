@@ -1,7 +1,7 @@
 # How to use this API?
 
 ## 1. Register
-- Method: POST
+- Method: **POST**
 - API url: ```/register```
 - Body: {
 	"username": "your_username",
@@ -17,7 +17,7 @@
 }
 
 ## 2. Login
-- Method: POST
+- Method: **POST**
 - API url: ```/login```
 - Body: {
 	"username": "your_username",
@@ -31,13 +31,13 @@
 }
 
 ## 3. Logout
-- Method: GET
+- Method: **GET**
 - API url: ```/logout/{token}```
 - Body: **none**
 - Server's response: *Logged out*
 
 ## 4. Get latest location
-- Method: GET
+- Method: **GET**
 - API url: ```/get-latest-location?token={your_token}&userid={your_userid}```
 - Body: **none**
 - Server's response: {
@@ -50,7 +50,7 @@
 }
 
 ## 5. Put new information
-- Method: PUT,
+- Method: **PUT**,
 - API url: ```/put-new-information```
 - Body: {
 	"information": [
