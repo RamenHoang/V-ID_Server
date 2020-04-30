@@ -9,25 +9,25 @@
 	"password_confirm": "rewrite_your_password",\
 	"licensePlate": "your_licensePlate"\
 }
-- Server's response: {&nbsp;
-    "SERVER_RESPONSE": 1,&nbsp;
-    "message": "Chào mừng your_username đã đến với V-ID",&nbsp;
-    "token": "the_token",&nbsp;
-    "userid": "your_user_id"&nbsp;
+- Server's response: {\
+    "SERVER_RESPONSE": 1,\
+    "message": "Chào mừng your_username đã đến với V-ID",\
+    "token": "the_token",\
+    "userid": "your_user_id"\
 }
 
 ## 2. Login
 - Method: **POST**
 - API url: ```/login```
-- Body: {&nbsp;
-	"username": "your_username",&nbsp;
-	"password": "your_password"&nbsp;
+- Body: {\
+	"username": "your_username",\
+	"password": "your_password"\
 }
-- Server's response: {&nbsp;
-    "SERVER_RESPONSE": 1,&nbsp;
-    "message": "Đăng nhập thành công. Xin chào your_username",&nbsp;
-    "token": "the_token",&nbsp;
-    "userid": "your_user_id"&nbsp;
+- Server's response: {\
+    "SERVER_RESPONSE": 1,\
+    "message": "Đăng nhập thành công. Xin chào your_username",\
+    "token": "the_token",\
+    "userid": "your_user_id"\
 }
 
 ## 3. Logout
@@ -40,37 +40,37 @@
 - Method: **GET**
 - API url: ```/get-latest-location?token={your_token}&userid={your_userid}```
 - Body: **none**
-- Server's response: {&nbsp;
-    "SERVER_RESPONSE": 1,&nbsp;
-    "message": "Chào mừng bạn đã sử dụng V-ID",&nbsp;
-    "movementData": {&nbsp;
-        "speed": the_speed, //Number&nbsp;
-        "lat": the_latitude_value, //Number&nbsp;
-        "lng": the_longitude_value //Number&nbsp;
+- Server's response: {\
+    "SERVER_RESPONSE": 1,\
+    "message": "Chào mừng bạn đã sử dụng V-ID",\
+    "movementData": {\
+        "speed": the_speed, //Number\
+        "lat": the_latitude_value, //Number\
+        "lng": the_longitude_value //Number\
 }
 
 ## 5. Put new information
 - Method: **PUT**,
 - API url: ```/put-new-information```
-- Body: {&nbsp;
-	"information": [&nbsp;
-			{&nbsp;
-				"name": "the_name",&nbsp;
-				"date": "the_date"&nbsp;
-			},&nbsp;
-      .....&nbsp;
-		],&nbsp;
-	"userId": "your_userid"&nbsp;
+- Body: {\
+	"information": [\
+			{\
+				"name": "the_name",\
+				"date": "the_date"\
+			},\
+      .....\
+		],\
+	"userId": "your_userid"\
 }
-- Server's response: [&nbsp;
-    {&nbsp;
-        "createdAt_String": "Thu Apr 30 2020 00:50:35 GMT+0700 (Indochina Time)",&nbsp;
-        "_id": "the_id_of_this_information",&nbsp;
-        "hostId": "the_id_of_vehicle",&nbsp;
-        "name": "the_name",&nbsp;
-        "fixedDate_String": "the_fixed_date",&nbsp;
-        "createdAt_Number": 1588182667214,&nbsp;
-        "__v": 0&nbsp;
-    },&nbsp;
-    .....&nbsp;
+- Server's response: [\
+    {\
+        "createdAt_String": "Thu Apr 30 2020 00:50:35 GMT+0700 (Indochina Time)",\
+        "_id": "the_id_of_this_information",\
+        "hostId": "the_id_of_vehicle",\
+        "name": "the_name",\
+        "fixedDate_String": "the_fixed_date",\
+        "createdAt_Number": 1588182667214,\
+        "__v": 0\
+    },\
+    .....\
 ]
