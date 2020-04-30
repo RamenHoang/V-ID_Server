@@ -3,12 +3,12 @@
 ## 1. Register
 - Method: **POST**
 - API url: ```/register```
-- Body: {\
-	> "username": "your_username",\
-	> "password": "your_password", // example Aa@1234 \
-	> "password_confirm": "rewrite_your_password",\
-	> "licensePlate": "your_licensePlate"\
-}
+- Body: > {\
+	>> "username": "your_username",\
+	>> "password": "your_password", // example Aa@1234 \
+	>> "password_confirm": "rewrite_your_password",\
+	>> "licensePlate": "your_licensePlate"\
+> }
 - Server's response: {\
     "SERVER_RESPONSE": 1,\
     "message": "Chào mừng your_username đã đến với V-ID",\
