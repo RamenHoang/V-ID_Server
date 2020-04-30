@@ -1,6 +1,6 @@
-#How to use this API?
+# How to use this API?
 
-##1. Register
+## 1. Register
 - Method: POST
 - API url: ==/register==
 - Body: {
@@ -16,7 +16,7 @@
     "userid": "your_user_id"
 }
 
-##2. Login
+## 2. Login
 - Method: POST
 - API url: ==/login==
 - Body: {
@@ -30,13 +30,13 @@
     "userid": "your_user_id"
 }
 
-##3. Logout
+## 3. Logout
 - Method: GET
 - API url: ==/logout/{token}==
 - Body: **none**
 - Server's response: *Logged out*
 
-##4. Get latest location
+## 4. Get latest location
 - Method: GET
 - API url: ==/get-latest-location?token={your_token}&userid={your_userid}==
 - Body: **none**
@@ -49,7 +49,7 @@
         "lng": the_longitude_value //Number
 }
 
-##5. Put new information
+## 5. Put new information
 - Method: PUT,
 - API url: ==/put-new-information==
 - Body: {
