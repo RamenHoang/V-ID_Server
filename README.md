@@ -4,10 +4,10 @@
 - Method: **POST**
 - API url: ```/register```
 - Body: {\
-	"username": "your_username",\
-	"password": "your_password", // example Aa@1234 \
-	"password_confirm": "rewrite_your_password",\
-	"licensePlate": "your_licensePlate"\
+	> "username": "your_username",\
+	> "password": "your_password", // example Aa@1234 \
+	> "password_confirm": "rewrite_your_password",\
+	> "licensePlate": "your_licensePlate"\
 }
 - Server's response: {\
     "SERVER_RESPONSE": 1,\
