@@ -6,6 +6,9 @@ let getNewestMovement = (hostId) => {
   return new Promise(async(resolve, reject) => {
     try {
       let vHost = await VehicleModel.getIdAndLengthByHostId(hostId);
+      if (vHost.movementDataLength === 0) {
+        return resolve(null);
+      }
       let newestMovement = await MovementModel.getNewest(vHost._id, vHost.movementDataLength - 1);
       console.log(newestMovement[0]);
       return resolve(newestMovement[0].movementData);

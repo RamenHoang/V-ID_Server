@@ -15,7 +15,24 @@ let postRegister = async (req, res) => {
   try {
     let registerStatus = await auth.register(req.body);
     console.log("Post Register");
-    return res.status(200).send(registerStatus);
+
+    passport.authenticate('local', (err, user, info) => {
+      req.logIn(user, err => {
+        if (err)
+          return next(err);
+        if (!err) {
+          // console.log(req.session.cookie);
+          return res.status(200).json({
+            SERVER_RESPONSE: 1,
+            message: `Đăng kí thành công. Xin chào ${req.user.username}`,
+            token: req.session.passport.user.token,
+            userid: `${req.user._id}`
+          });   
+        }
+      });
+    }) (req, res);
+
+    // return res.status(200).send(registerStatus);
   } catch (error) {
     console.log(error);
     return res.status(400).send(error);

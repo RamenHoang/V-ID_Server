@@ -5,7 +5,7 @@ let receiveDataFromModule = io => {
   io.on('connection', socket => {
     let clients = {};
 
-    socket.on('Send-data-to-server', data => {
+    socket.on('Sent-data-to-server', data => {
       console.log(data);
       io.sockets.emit('Server-sent-gps-data', {
         lat: data.gps[0],
