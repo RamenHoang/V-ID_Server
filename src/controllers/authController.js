@@ -15,13 +15,15 @@ let postRegister = async (req, res) => {
   try {
     let registerStatus = await auth.register(req.body);
     console.log("Post Register");
-
+    if (registerStatus.error) {
+      return res.status(400).send(registerStatus);
+    }
+    
     passport.authenticate('local', (err, user, info) => {
       req.logIn(user, err => {
-        if (err)
-          return next(err);
         if (!err) {
           // console.log(req.session.cookie);
+          console.log(user);
           return res.status(200).json({
             SERVER_RESPONSE: 1,
             message: `Đăng kí thành công. Xin chào ${req.user.username}`,
@@ -32,7 +34,6 @@ let postRegister = async (req, res) => {
       });
     }) (req, res);
 
-    // return res.status(200).send(registerStatus);
   } catch (error) {
     console.log(error);
     return res.status(400).send(error);
@@ -42,7 +43,7 @@ let postRegister = async (req, res) => {
 let getLogout = (req, res) => {
   req.logout();
   session.logout(req.params.token);
-  return res.status(200).send('Loged out');
+  return res.status(200).send('Logged out');
 }
 
 let postLogin = (req, res, next) => {

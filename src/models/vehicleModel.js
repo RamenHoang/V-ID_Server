@@ -32,7 +32,7 @@ VehicleSchema.statics = {
     return this.findOneAndUpdate({
       _id: id
     }, {
-      $inc: { "movementDataLength": 1 }
+      $inc: { 'movementDataLength': 1 }
     }).exec();
   }
 }

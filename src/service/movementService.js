@@ -27,10 +27,27 @@ let addNew = item => {
     } catch (error) {
       reject(error);
     }
-  })
+  });
+}
+
+let getAllMovements = hostId => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      let allMovements = await MovementModel.getAllMovements(hostId);
+
+      if (allMovements !== undefined) {
+        return resolve(allMovements);
+      }
+
+      return reject('ERR: Sth at getAllMovements of movementService');
+    } catch (error) {
+      return reject(error);
+    }
+  });
 }
 
 module.exports = {
   getNewestMovement: getNewestMovement,
-  addNew: addNew
+  addNew: addNew,
+  getAllMovements: getAllMovements
 }

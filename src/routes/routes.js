@@ -28,6 +28,8 @@ let initRoutes = (app, passport) => {
 
   router.put('/put-new-information', information.putNewInformation);
 
+  router.get('/get-all-movements/:userId', authValid.checkLoggedIn, movement.getAllMovements);
+
   app.use('/', router);
 }
 

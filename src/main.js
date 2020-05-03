@@ -152,7 +152,7 @@ var model = tf.sequential() // input -> output
 
 // Make layers
 let middleLayer = tf.layers.dense({
-  units: 32,
+  units: 59,
   activation: 'sigmoid',
   inputDim: 2
 });

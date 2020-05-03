@@ -1,18 +1,31 @@
 const { putNewLocation } = require('../helper/helper');
+const { isStolenSuggestion } = require('../service/suggestionService')
 const { pushSocketIdToArray, emitNotifyToArray, removeSocketIdFromArray } = require('../helper/socketHelper');
 
 let receiveDataFromModule = io => {
   io.on('connection', socket => {
     let clients = {};
 
+    console.log(socket.id);
     socket.on('Sent-data-to-server', data => {
       console.log(data);
+
+      putNewLocation(data.hostId, data.gps[0], data.gps[1], data.gps[2]);
+
       io.sockets.emit('Server-sent-gps-data', {
         lat: data.gps[0],
         lng: data.gps[1]
       });
-      // putNewLocation(data.hostId, data.gps[0], data.gps[1], data.gps[2]);
-    })
+
+      isStolenSuggestion(data.distance, data.gps[2])
+      .then(result => {
+        if (result === 0) return;
+
+        io.sockets.emit('Server-suggest-is-stolen', {
+          status: result
+        });
+      })
+    });
 
     socket.on('send-data-to-server', data => {
       console.log(data);

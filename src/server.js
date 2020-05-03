@@ -51,4 +51,3 @@ initSockets(io);
 server.listen(process.env.PORT, () => {
 	console.log(`Hello Ramen, I'm running at ${process.env.PORT}/`);
 });
-
