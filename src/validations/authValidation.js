@@ -21,8 +21,8 @@ let checkLoggedIn = async (req, res, next) => {
       return next();
     }
   }
-  console.log("Not log in");
-  return res.status(500).send({
+  console.log("Not logged in");
+  return res.status(400).send({
     SERVER_RESPONSE: 0,
     error: "Not logged in"
   });

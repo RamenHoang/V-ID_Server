@@ -27,6 +27,7 @@ let putNewLocation = async (req, res) => {
   }
 }
 
+
 module.exports = {
   putNewLocation: putNewLocation
 }

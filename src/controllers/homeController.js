@@ -4,6 +4,15 @@ let getHome = async (req, res) => {
   try {
     let hostId = req.query.userid;
     let newestMovement = await movement.getNewestMovement(hostId);
+
+    if (newestMovement === null) {
+      return res.status(200).send({
+        SERVER_RESPONSE: 0,
+        message: `Chào mừng bạn đã sử dụng V-ID`,
+        movementData: newestMovement
+      });
+    }
+
     return res.status(200).send({
       SERVER_RESPONSE: 1,
       message: `Chào mừng bạn đã sử dụng V-ID`,
