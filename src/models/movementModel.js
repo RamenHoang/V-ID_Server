@@ -15,10 +15,18 @@ MovementSchema.statics = {
   createNew(movementItem) {
     return this.create(movementItem);
   },
-  getNewest(id, index) {
+  getNewest(hostId, index) {
     return this.find({
-      hostId: id
+      hostId: hostId
     }).skip(index).exec();
+  }, 
+  getAllMovements(hostId) {
+    return this.find({
+      hostId: hostId
+    }, {
+      movementData: 1,
+      _id: 0,
+    }).exec()
   }
 }
 

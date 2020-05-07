@@ -7,7 +7,7 @@
         {
           "class_name": "Dense",
           "config": {
-            "units": 32,
+            "units": 59,
             "activation": "sigmoid",
             "use_bias": true,
             "kernel_initializer": {
@@ -79,21 +79,21 @@
           "name": "dense_Dense1/kernel",
           "shape": [
             2,
-            32
+            59
           ],
           "dtype": "float32"
         },
         {
           "name": "dense_Dense1/bias",
           "shape": [
-            32
+            59
           ],
           "dtype": "float32"
         },
         {
           "name": "dense_Dense2/kernel",
           "shape": [
-            32,
+            59,
             2
           ],
           "dtype": "float32"

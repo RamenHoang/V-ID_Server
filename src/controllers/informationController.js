@@ -1,6 +1,6 @@
 const { information } = require('../service/services');
 
-module.exports.putNewInformation = async (req, res) => {
+let putNewInformation = async (req, res) => {
   try {
     
     let _information = [];
@@ -25,4 +25,8 @@ module.exports.putNewInformation = async (req, res) => {
     console.log(error);
     return res.status(400).send(error);
   }
+}
+
+module.exports = {
+  putNewInformation: putNewInformation
 }

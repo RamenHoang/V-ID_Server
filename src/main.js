@@ -152,7 +152,7 @@ var model = tf.sequential() // input -> output
 
 // Make layers
 let middleLayer = tf.layers.dense({
-  units: 32,
+  units: 59,
   activation: 'sigmoid',
   inputDim: 2
 });
@@ -167,9 +167,10 @@ model.add(outputLayer);
 
 model.compile({
   optimizer: tf.train.sgd(1),
-  loss: 'categoricalCrossentropy'
+  loss: 'meanSquaredError'
 });
 
+// loss: 'meanSquaredError',
 
 /**
  * 3. Train and save model
@@ -188,8 +189,9 @@ let train = async () => {
 
 train().then(async data => {
   console.log('Learning rate:', 1);
-  console.log(data.history.loss.reverse());
-  // await model.save('file://./src/modelML.json');
+  console.log('Loss function: ', 'meanSquaredError');
+  console.log(data.history.loss.reverse()[0]);
+  await model.save('file://./src/modelML.json');
 });
 
 
