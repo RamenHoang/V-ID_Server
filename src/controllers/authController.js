@@ -41,8 +41,8 @@ let postRegister = async (req, res) => {
 }
 
 let getLogout = (req, res) => {
-  req.logout();
   session.logout(req.params.token);
+  req.logout();
   return res.status(200).send('Logged out');
 }
 

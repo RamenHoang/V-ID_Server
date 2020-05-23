@@ -40,6 +40,20 @@ app.use(passport.session());
 initPassportLocal(passport);
 initRoutes(app, passport);
 
+app.get('/alarm', (req, res) => {
+  io.sockets.emit('Server-suggest-is-stolen', {
+    status: 1
+  });
+  console.log("GET");
+  return res.status(200).send('OK');
+});
+
+
+app.post("/data", (req, res) => {
+  console.log(req.body);
+  return res.status(200).send("POST: OK");
+})
+
 // configSocketIo(io, cookieParser, session.sessionStore);
 
 initSockets(io);

@@ -24,6 +24,21 @@ let getHome = async (req, res) => {
   }
 }
 
+let getMap = async (req, res) => {
+  let hostId = '5eaf9bfc9bc3b70017fbe21c';
+  let newestMovement = await movement.getNewestMovement(hostId);
+
+  // console.log(newestMovement);
+
+  let newData = {
+    lat: newestMovement.lat,
+    lng: newestMovement.lng
+  }
+
+  return res.render('map', newData);
+}
+
 module.exports = {
-  getHome: getHome
+  getHome: getHome,
+  getMap: getMap
 }

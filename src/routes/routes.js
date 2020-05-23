@@ -10,6 +10,8 @@ let initRoutes = (app, passport) => {
     res.render('index');
   });
 
+  router.get('/map', home.getMap);
+
   router.get('/get_suggestion', suggestion.suggestStolenStatus);
   
   router.get('/get-latest-location', authValid.checkLoggedIn, home.getHome);

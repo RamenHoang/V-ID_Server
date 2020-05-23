@@ -8,47 +8,53 @@ require("tfjs-node-save");
  */
 let data =
   [
-    { distance: 24, speed: 13, status: 'stolen' },
+    { distance: 24, speed: 9, status: 'stolen' },
     { distance: 1, speed: 0, status: 'no_stolen' },
-    { distance: 19, speed: 14, status: 'stolen' },
+    { distance: 19, speed: 12, status: 'stolen' },
     { distance: 3, speed: 2, status: 'no_stolen' },
-    { distance: 29, speed: 15, status: 'stolen' },
+    { distance: 29, speed: 9, status: 'stolen' },
     { distance: 1, speed: 0, status: 'no_stolen' },
     { distance: 2, speed: 1, status: 'no_stolen' },
-    { distance: 17, speed: 12, status: 'stolen' },
+    { distance: 17, speed: 6, status: 'stolen' },
     { distance: 3, speed: 0, status: 'no_stolen' },
-    { distance: 23, speed: 14, status: 'stolen' },
-    { distance: 25, speed: 12, status: 'stolen' },
-    { distance: 36, speed: 17, status: 'stolen' },
+    { distance: 23, speed: 8, status: 'stolen' },
+    { distance: 25, speed: 9, status: 'stolen' },
+    { distance: 36, speed: 13, status: 'stolen' },
     { distance: 2, speed: 0, status: 'no_stolen' },
     { distance: 1, speed: 0, status: 'no_stolen' },
     { distance: 3, speed: 1, status: 'no_stolen' },
     { distance: 2, speed: 1, status: 'no_stolen' },
     { distance: 3, speed: 1, status: 'no_stolen' },
-    { distance: 29, speed: 16, status: 'stolen' },
-    { distance: 22, speed: 16, status: 'stolen' },
+    { distance: 29, speed: 10, status: 'stolen' },
+    { distance: 22, speed: 9, status: 'stolen' },
     { distance: 30, speed: 11, status: 'stolen' },
-    { distance: 9, speed: 18, status: 'stolen' },
-    { distance: 20, speed: 16, status: 'stolen' },
-    { distance: 25, speed: 14, status: 'stolen' },
+    { distance: 29, speed: 12, status: 'stolen' },
+    { distance: 20, speed: 7, status: 'stolen' },
+    { distance: 25, speed: 9, status: 'stolen' },
+    { distance: 12, speed: 3, status: 'stolen' },
+    { distance: 13, speed: 4, status: 'stolen' },
+    { distance: 14, speed: 3, status: 'stolen' },
+    { distance: 10, speed: 3, status: 'stolen' },
+    { distance: 11, speed: 4, status: 'stolen' },
+    { distance: 9, speed: 3, status: 'stolen' },
     { distance: 1, speed: 1, status: 'no_stolen' },
-    { distance: 33, speed: 15, status: 'stolen' },
-    { distance: 23, speed: 12, status: 'stolen' },
+    { distance: 33, speed: 11, status: 'stolen' },
+    { distance: 23, speed: 8, status: 'stolen' },
     { distance: 29, speed: 11, status: 'stolen' },
-    { distance: 23, speed: 13, status: 'stolen' },
-    { distance: 14, speed: 17, status: 'stolen' },
+    { distance: 23, speed: 8, status: 'stolen' },
+    { distance: 14, speed: 14, status: 'stolen' },
     { distance: 4, speed: 2, status: 'no_stolen' },
-    { distance: 29, speed: 18, status: 'stolen' },
-    { distance: 30, speed: 15, status: 'stolen' },
-    { distance: 20, speed: 10, status: 'stolen' },
-    { distance: 23, speed: 12, status: 'stolen' },
-    { distance: 29, speed: 16, status: 'stolen' },
-    { distance: 33, speed: 15, status: 'stolen' },
+    { distance: 29, speed: 12, status: 'stolen' },
+    { distance: 30, speed: 11, status: 'stolen' },
+    { distance: 20, speed: 8, status: 'stolen' },
+    { distance: 23, speed: 8, status: 'stolen' },
+    { distance: 29, speed: 11, status: 'stolen' },
+    { distance: 33, speed: 11, status: 'stolen' },
     { distance: 3, speed: 2, status: 'no_stolen' },
     { distance: 2, speed: 1, status: 'no_stolen' },
-    { distance: 15, speed: 18, status: 'stolen' },
+    { distance: 15, speed: 6, status: 'stolen' },
     { distance: 1, speed: 0, status: 'no_stolen' },
-    { distance: 18, speed: 14, status: 'stolen' },
+    { distance: 18, speed: 7, status: 'stolen' },
     { distance: 2, speed: 1, status: 'no_stolen' },
     { distance: 30, speed: 11, status: 'stolen' },
     { distance: 1, speed: 1, status: 'no_stolen' },
@@ -57,40 +63,57 @@ let data =
     { distance: 2, speed: 0, status: 'no_stolen' },
     { distance: 3, speed: 0, status: 'no_stolen' },
     { distance: 2, speed: 1, status: 'no_stolen' },
-    { distance: 15, speed: 18, status: 'stolen' },
-    { distance: 15, speed: 14, status: 'stolen' },
-    { distance: 25, speed: 13, status: 'stolen' },
-    { distance: 33, speed: 17, status: 'stolen' },
+    { distance: 15, speed: 6, status: 'stolen' },
+    { distance: 15, speed: 6, status: 'stolen' },
+    { distance: 25, speed: 9, status: 'stolen' },
+    { distance: 33, speed: 11, status: 'stolen' },
     { distance: 2, speed: 0, status: 'no_stolen' },
-    { distance: 21, speed: 18, status: 'stolen' },
-    { distance: 20, speed: 16, status: 'stolen' },
-    { distance: 30, speed: 16, status: 'stolen' },
-    { distance: 26, speed: 12, status: 'stolen' },
-    { distance: 22, speed: 14, status: 'stolen' },
+    { distance: 21, speed: 8, status: 'stolen' },
+    { distance: 20, speed: 7, status: 'stolen' },
+    { distance: 30, speed: 10, status: 'stolen' },
+    { distance: 26, speed: 9, status: 'stolen' },
+    { distance: 22, speed: 8, status: 'stolen' },
     { distance: 5, speed: 2, status: 'no_stolen' },
-    { distance: 35, speed: 18, status: 'stolen' },
-    { distance: 25, speed: 16, status: 'stolen' },
+    { distance: 35, speed: 12, status: 'stolen' },
+    { distance: 25, speed: 9, status: 'stolen' },
     { distance: 2, speed: 2, status: 'no_stolen' },
     { distance: 0, speed: 0, status: 'no_stolen' },
-    { distance: 33, speed: 17, status: 'stolen' },
+    { distance: 34, speed: 11, status: 'stolen' },
+    { distance: 10, speed: 3, status: 'stolen' },
+    { distance: 13, speed: 3, status: 'stolen' },
+    { distance: 12, speed: 3, status: 'stolen' },
+    { distance: 10, speed: 4, status: 'stolen' },
+    { distance: 15, speed: 4, status: 'stolen' },
+    { distance: 9, speed: 3, status: 'stolen' },
     { distance: 0, speed: 2, status: 'no_stolen' },
-    { distance: 23, speed: 16, status: 'stolen' },
+    { distance: 23, speed: 8, status: 'stolen' },
     { distance: 0, speed: 2, status: 'no_stolen' },
     { distance: 2, speed: 0, status: 'no_stolen' },
-    { distance: 30, speed: 17, status: 'stolen' },
-    { distance: 22, speed: 16, status: 'stolen' },
-    { distance: 36, speed: 10, status: 'stolen' },
+    { distance: 32, speed: 11, status: 'stolen' },
+    { distance: 22, speed: 7, status: 'stolen' },
+    { distance: 36, speed: 12, status: 'stolen' },
     { distance: 0, speed: 2, status: 'no_stolen' },
     { distance: 3, speed: 0, status: 'no_stolen' },
     { distance: 0, speed: 2, status: 'no_stolen' },
-    { distance: 25, speed: 14, status: 'stolen' },
-    { distance: 29, speed: 18, status: 'stolen' },
+    { distance: 25, speed: 8, status: 'stolen' },
+    { distance: 29, speed: 9, status: 'stolen' },
     { distance: 2, speed: 0, status: 'no_stolen' },
-    { distance: 26, speed: 11, status: 'stolen' },
-    { distance: 16, speed: 18, status: 'stolen' },
-    { distance: 25, speed: 13, status: 'stolen' },
+    { distance: 26, speed: 7, status: 'stolen' },
+    { distance: 16, speed: 7, status: 'stolen' },
+    { distance: 25, speed: 8, status: 'stolen' },
     { distance: 3, speed: 1, status: 'no_stolen' },
-    { distance: 36, speed: 12, status: 'stolen' }
+    { distance: 36, speed: 0, status: 'stolen' },
+    { distance: 31, speed: 1, status: 'stolen' },
+    { distance: 50, speed: 1, status: 'stolen' },
+    { distance: 29, speed: 0, status: 'stolen' },
+    { distance: 43, speed: 0, status: 'stolen' },
+    { distance: 27, speed: 1, status: 'stolen' },
+    { distance: 24, speed: 0, status: 'stolen' },
+    { distance: 28, speed: 1, status: 'stolen' },
+    { distance: 15, speed: 1, status: 'stolen' },
+    { distance: 18, speed: 0, status: 'stolen' },
+    { distance: 17, speed: 0, status: 'stolen' },
+    { distance: 18, speed: 1, status: 'stolen' }
   ];
 
 /*
@@ -119,8 +142,8 @@ for (let i = 1; i < data.length; i++) {
 
 // console.log(min_d, max_d, min_s, max_s);
 
-let normalizedData = [];
-let status = [];
+let normalizedData = []; //raw input
+let status = []; //  raw output
 let statusName = ['no_stolen', 'stolen'];
 
 
@@ -138,7 +161,7 @@ data.map(item => {
 // console.log('status', status);
 
 
-let tfInput = tf.tensor2d(normalizedData);
+let tfInput = tf.tensor2d(normalizedData); // tensorflow datatype input
 
 let tfStatusTensor = tf.tensor1d(status, 'int32');
 
@@ -149,9 +172,8 @@ let tfOutput = tf.oneHot(tfStatusTensor, 2);
  */
 var model = tf.sequential() // input -> output
 
-
 // Make layers
-let middleLayer = tf.layers.dense({
+let hiddenLayer = tf.layers.dense({
   units: 59,
   activation: 'sigmoid',
   inputDim: 2
@@ -162,7 +184,7 @@ let outputLayer = tf.layers.dense({
   activation: 'softmax'
 });
 
-model.add(middleLayer);
+model.add(hiddenLayer);
 model.add(outputLayer);
 
 model.compile({

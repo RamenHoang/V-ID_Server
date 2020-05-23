@@ -14,10 +14,15 @@ let receiveDataFromModule = io => {
 
       io.sockets.emit('Server-sent-gps-data', {
         lat: data.gps[0],
-        lng: data.gps[1]
+        lng: data.gps[1],
+        speed: data.gps[2]
       });
 
-      isStolenSuggestion(data.distance, data.gps[2])
+      // console.log(data.checkThief);
+
+      if (data.checkThief === 1) {
+        console.log('THIEF');
+        isStolenSuggestion(data.distance, data.gps[2])
         .then(result => {
           console.log('IS STOLEN: ', result);
 
@@ -27,6 +32,7 @@ let receiveDataFromModule = io => {
             status: result
           });
         });
+      }
     });
 
     socket.on('send-data-to-server', data => {

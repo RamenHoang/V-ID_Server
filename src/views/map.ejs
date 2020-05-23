@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Map</title>
+
+  <style type="text/css">
+    #map {
+      height: 400px;
+      width: 100%;
+    }
+
+    div.title {
+      height: 80px;
+      text-align: center;
+      padding: 20px;
+      margin: 0px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="row title">
+    <h1>Tracking your vehicle</h1>
+    <br>
+    <span id="Stolen"></span>
+  </div>
+
+  <div id="map"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.dev.js"></script>
+
+  <script>
+    var socket = io();
+    var map;
+    var MARKER = null;
+
+    // console.log(socket);
+
+    function initMap() {
+      var myLatLng = { lat: +'<%- lat %>', lng: +'<%- lng %>' };
+
+      var mapOptions = {
+        center: myLatLng,
+        zoom: 17,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      };
+
+      var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+      addMarker(map, myLatLng);
+
+      socket.on('Server-sent-gps-data', data => {
+        var curr = {
+          lat: data.lat,
+          lng: data.lng
+        }
+        clearMarkers();
+        addMarker(map, curr);
+      });
+
+      socket.on('Server-suggest-is-stolen', data => {
+        document.getElementById('Stolen').innerHTML = data.status;
+      });
+    }
+
+    function addMarker(map, latLng) {
+      var marker = new google.maps.Marker({
+        position: latLng,
+        map: map,
+        title: 'My Vehicle',
+        animation: google.maps.Animation.DROP
+      });
+
+      map.setCenter(latLng);
+      MARKER = marker;
+    }
+
+    function clearMarkers() {
+      MARKER.setMap(null);
+    }
+
+    // initMap();
+  </script>
+
+  <script
+    src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&sensor=false&key=AIzaSyB3yuCgVVVjf_63sboj92XfIv-9hJqdZVM&callback=initMap"
+    async defer></script>
+
+</body>
+
+</html>
